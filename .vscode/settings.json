@@ -3,5 +3,9 @@
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "livePreview.defaultPreviewPath": "/src/views/index.ejs"
+    "livePreview.defaultPreviewPath": "/src/views/index.ejs",
+    "cSpell.ignoreWords": [
+        "Lexend",
+        "lexend"
+    ]
 }
