@@ -1,3 +1,11 @@
 {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "livePreview.defaultPreviewPath": "/src/views/index.ejs",
+    "cSpell.ignoreWords": [
+        "Lexend",
+        "lexend"
+    ]
 }
