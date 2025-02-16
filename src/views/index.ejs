@@ -1,69 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="/styles.css" />
-		<title>Chef's notebook</title>
-	</head>
-	<body>
-		<header class="main-header">
-			<span id="title-header">Chef's notebook</span>
-			<ul id="icons-header">
-				<p><a href="">Perfil</a></p>
-				<p><a href="">Settings</a></p>
-			</ul>
-		</header>
-		<section class="home-page">
-			<span class="tx-sm">Recetas de cocina</span>
-			<h1 class="tx-xl">Chef's Notebook</h1>
-			<p class="tx-sm">Registra tus experiencias culinarias</p>
-		</section>
-		<section class="content">
-			<article>
-				<h1>Opciones</h1>
-				<section id="container-relative">
-					<a id="button-corner" href="/add-recipe">
-						<i class="fa-solid fa-plus "></i>
-					</a>
-					<div class="card flex-column">
-						<h2 class="bg-sec-brown tx-sm">Añadir receta</h2>
-						<div class="bg-sec-white flex-column align-center">
-							<p class="tx-sm">
-								Haz click en el botón para añadir una nueva receta
-							</p>
-							<img
-								id="add-recipe-img"
-								src="https://static.vecteezy.com/system/resources/previews/021/952/528/non_2x/delicious-cobb-salad-cobb-salad-image-tomatoes-bacon-hard-boiled-eggs-blue-cheese-png.png"
-								alt="plato-comida"
-							/>
-						</div>
-					</div>
-				</section>
-
-				<div class="card flex-column">
-					<h2 class="bg-pr-green tx-sm">Recetas totales</h2>
-					<div class="bg-sec-white flex-row flex-row align-center">
-						<p class="tx-lg">10</p>
-						<p>Recetas registradas</p>
-					</div>
+<%- include('partials/header') %>
+<section class="home-page">
+	<span class="tx-sm">Recetas de cocina</span>
+	<h1 class="tx-xl">Chef's Notebook</h1>
+	<p class="tx-sm">Registra tus experiencias culinarias</p>
+</section>
+<section class="content">
+	<article>
+		<h1>Opciones</h1>
+		<section id="container-relative">
+			<a id="button-corner" href="/add-recipe">
+				<i class="fa-solid fa-plus"></i>
+			</a>
+			<div class="card flex-column">
+				<h2 class="bg-sec-brown tx-sm">Añadir receta</h2>
+				<div class="bg-sec-white flex-column align-center">
+					<p class="tx-sm">
+						Haz click en el botón para añadir una nueva receta
+					</p>
+					<img
+						id="add-recipe-img"
+						src="https://static.vecteezy.com/system/resources/previews/021/952/528/non_2x/delicious-cobb-salad-cobb-salad-image-tomatoes-bacon-hard-boiled-eggs-blue-cheese-png.png"
+						alt="plato-comida"
+					/>
 				</div>
-			</article>
-			<article>Favoritos</article>
-			<article id="recipes">Recetas</article>
+			</div>
 		</section>
-		<footer class="main-footer">
-			<span class="card bg-pr-brown tx-sm">2025 Chef's notebook</span>
-			<span class="card grow bg-sec-white tx-sm"
-				>Made with 💘 by Naim Torres</span
-			>
-		</footer>
-	</body>
-</html>
+
+		<div class="card flex-column">
+			<h2 class="bg-pr-green tx-sm">Recetas totales</h2>
+			<div class="bg-sec-white flex-row flex-row align-center">
+				<p class="tx-lg">10</p>
+				<p>Recetas registradas</p>
+			</div>
+		</div>
+	</article>
+	<article>Favoritos</article>
+	<article id="recipes" class="flex-column">
+		Recetas
+		<div class="card flex-column grow">
+			<h2 class="bg-sec-brown tx-sm">
+				<input
+					type="search"
+					class="grow tx-xs tx-bold"
+					name="search-recipe"
+					id="search-recipe"
+					placeholder="Qué comemos hoy?"
+				/>
+			</h2>
+			<div class="bg-sec-white flex-column align-center h-100">
+                <%= recipes %>
+            </div>
+		</div>
+	</article>
+</section>
+<%- include('partials/footer') %>
