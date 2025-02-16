@@ -1,9 +1,13 @@
-<% if (recipes.length > 0) { recipes.forEach(recipe => { %>
-<div class="card flex-column">
-	<h3 class="tx-sm"><%= recipe.title %></h3>
-	<p class="tx-xs"><%= recipe.description %></p>
-	<img src="<%= recipe.image %>" alt="<%= recipe.title %>" />
-</div>
-<% })} else { %>
+<p>Nuevo</p>
+<% if(recipes.length > 0) { %> 
+    <%- recipes.forEach((recipe) => { %>
+        <div class="card flex-column">
+            <h3 class="tx-sm"><%= recipe.name %></h3>
+            <p class="tx-xs"><%= recipe.description %></p>
+            <img src="<%= recipe.image %>" alt="<%= recipe.title %>" />
+        </div>
+        <% } %>
+    <% ) %>
+<% } else { %>
 <p class="tx-sm">No hay recetas registradas</p>
-}%>
+} %>

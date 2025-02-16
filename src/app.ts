@@ -24,8 +24,13 @@ app.get("/", async (req, res) => {
         const [recipes] = await connection.query('SELECT * FROM recipes')
         res.status(201).render('index', { recipes })
     } catch (error) {
-        console.error('Error al consultar la base de datos:', error)
-        const recipes: [] = []
+        console.error('Error al consultar la base de datos:')
+        const recipes: [{}] = [{
+            id: 1,
+            name: 'Tacos de carnitas',
+            description: 'Tacos de carnitas de cerdo',
+            image: 'https://www.cocinavital.mx/wp-content/uploads/2019/04/tacos-de-carnitas.jpg'
+        }]
         res.status(201).render('index', { recipes })
     }
 })
