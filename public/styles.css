@@ -76,6 +76,34 @@ h2 {
     border-radius: 15px;
 }
 
+#list-recipes {
+    height: 450px;
+}
+
+#favorites {
+    overflow: hidden;
+    padding: 0;
+}
+
+#fav-carrousel {
+    overflow: scroll;
+    margin-right: 45px;
+}
+
+#row-recipe {
+    padding: 0;
+}
+
+.carrousel-card {
+    width: 300px;
+}
+
+
+.img-fav-card {
+    width: 100px;
+    height: 100px;
+}
+
 .flex-column {
 	display: flex;
 	flex-direction: column;
@@ -178,6 +206,10 @@ h2 {
     height: 100%;
 }
 
+.w-100 {
+    width: 100%;
+}
+
 .card {
 	display: flex;
 	place-content: center;
@@ -210,9 +242,8 @@ h2 {
 
 .content {
 	display: grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 1fr 2fr;
 	grid-template-rows: 1fr 1fr;
-	height: 100vh;
 	margin: 20px 100px;
 
     #recipes {

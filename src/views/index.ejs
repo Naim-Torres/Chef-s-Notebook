@@ -34,10 +34,13 @@
 			</div>
 		</div>
 	</article>
-	<article>Favoritos</article>
+	<article id="favorites" >
+        <h1>Favoritos</h1>
+            <%- include('partials/favorites', { recipes })%>
+    </article>
 	<article id="recipes" class="flex-column">
-		Recetas
-		<div class="card flex-column grow">
+		<h1>Recetas</h1>
+		<div id="list-recipes" class="card flex-column grow">
 			<h2 class="bg-sec-brown tx-sm">
 				<input
 					type="search"
@@ -47,8 +50,8 @@
 					placeholder="Qué comemos hoy?"
 				/>
 			</h2>
-			<div class="bg-sec-white flex-column align-center h-100">
-				<%= Object.values(recipes)[0] %>
+			<div style="overflow: auto;" class="bg-sec-white flex-column align-center h-100">
+				<%- include('partials/list-recipes', { recipes })%>
 			</div>
 		</div>
 	</article>
