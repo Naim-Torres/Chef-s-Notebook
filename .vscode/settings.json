@@ -6,6 +6,10 @@
     "livePreview.defaultPreviewPath": "/src/views/index.ejs",
     "cSpell.ignoreWords": [
         "Lexend",
+        "carnitas",
         "lexend"
-    ]
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }

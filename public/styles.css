@@ -69,6 +69,41 @@ h2 {
 	position: relative;
 }
 
+#search-recipe {
+    margin: 10px;
+    padding: 12px 15px;
+    border: transparent;
+    border-radius: 15px;
+}
+
+#list-recipes {
+    height: 450px;
+}
+
+#favorites {
+    overflow: hidden;
+    padding: 0;
+}
+
+#fav-carrousel {
+    overflow: scroll;
+    margin-right: 45px;
+}
+
+#row-recipe {
+    padding: 0;
+}
+
+.carrousel-card {
+    width: 300px;
+}
+
+
+.img-fav-card {
+    width: 100px;
+    height: 100px;
+}
+
 .flex-column {
 	display: flex;
 	flex-direction: column;
@@ -143,6 +178,10 @@ h2 {
 	background: var(--secondary-brown);
 }
 
+.tx-xs {
+    font-size: 0.75rem;
+}
+
 .tx-sm {
 	font-size: 1rem;
 }
@@ -163,6 +202,14 @@ h2 {
 	font-weight: bold;
 }
 
+.h-100 {
+    height: 100%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
 .card {
 	display: flex;
 	place-content: center;
@@ -171,6 +218,7 @@ h2 {
 	border-radius: 15px;
 
 	h2 {
+        display: flex;
 		border-top-left-radius: 15px;
 		border-top-right-radius: 15px;
 		margin: 0;
@@ -194,8 +242,11 @@ h2 {
 
 .content {
 	display: grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 1fr 2fr;
 	grid-template-rows: 1fr 1fr;
-	height: 600px;
-	margin: 30px 100px;
+	margin: 20px 100px;
+
+    #recipes {
+        grid-area: 2 / 1 / 3 / -1;
+    }
 }
