@@ -1,6 +1,6 @@
 <section id="fav-carrousel" class="flex-row h-100">
-    <% if(recipes.length > 0) { %> 
-        <% recipes.forEach((recipe) => { %> 
+    <% if(favorites.length > 0) { %> 
+        <% favorites.forEach((recipe) => { %> 
             <%if(recipes) { %>
                 <div class="flex-column carrousel-card card bg-sec-white h-100">
                     <img class="img-fav-card" src="<%= recipe.img %>" alt="<%= recipe.name %>" />
