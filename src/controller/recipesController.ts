@@ -1,4 +1,4 @@
-import Recipes from '../models/Recipes'
+import Recipes from '../models/recipes'
 import { Request, Response } from 'express'
 
 class recipesController {
@@ -9,7 +9,7 @@ class recipesController {
             console.log(favorites)
             res.status(201).render('index', { recipes, favorites })
         }catch(error){
-            console.error('Error al consultar la base de datos:')
+            console.error('Error al consultar la base de datos:', error)
             res.status(500).render('index', { recipes: [], favorites: [] })
         }
     }
