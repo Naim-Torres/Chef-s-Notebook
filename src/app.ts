@@ -1,7 +1,7 @@
 import express from "express"
 import morgan from "morgan"
 import path from "node:path"
-import db from "./lib/db.mjs"
+import recipesController from "./controller/recipesController"
 
 const app = express()
 app.use(morgan("dev"))
@@ -14,20 +14,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 const PORT = process.env.PORT || 3000
 
-/* app.get("/", (req, res) => {
-    res.render("index")
-}) */
-
-app.get("/", async (req, res) => {
-    try {
-        const connection = await db.connect()
-        const [recipes] = await connection.query('SELECT * FROM recipes')
-        res.status(201).render('index', { recipes })
-    } catch (error) {
-        console.error('Error al consultar la base de datos:')
-        res.status(201).render('index', { recipes: [] })
-    }
-})
+app.get("/", recipesController.getAll)
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
