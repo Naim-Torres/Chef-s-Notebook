@@ -1,9 +1,9 @@
 <% if(recipes.length > 0) { %> 
     <% recipes.forEach((recipe) => { %>
-        <div id='row-recipe' class="flex-row">
+        <a href="/recipe?id=<%= recipe.id%>" id='row-recipe' class="flex-row">
             <h3 class="tx-sm"><%= recipe.name %></h3>
             <p class="tx-xs"><%= recipe.description %></p>
-        </div>
+        </a>
         <% }) %>
 <% } else { %>
 <p class="tx-sm">No hay recetas registradas</p>
