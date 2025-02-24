@@ -7,9 +7,9 @@ class recipesController {
             const recipes = await Recipes.getAll()
             const favorites = await Recipes.getFavorites()
             res.status(201).render('index', { recipes, favorites })
-        }catch(error){
-            console.error('Error al consultar la base de datos:', error)
-            res.status(500).render('index', { recipes: [], favorites: [] })
+        }catch {
+            console.error('Error al consultar la base de datos')
+            res.status(503).render('index', { recipes: [], favorites: [] })
         }
     }
 
@@ -30,6 +30,10 @@ class recipesController {
             console.error('Error al consultar la base de datos')
             res.status(404).send('No se ha encontrado la receta')
         }
+    }
+
+    static async submitRecipe(req: Request, res: Response) {
+        res.status(201).render('add')
     }
 }
 

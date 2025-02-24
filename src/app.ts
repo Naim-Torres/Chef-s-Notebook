@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 3000
 
 app.get("/", recipesController.getAll)
 app.get("/recipe", recipesController.getOne)
+app.get("/recipe/add", recipesController.submitRecipe)
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)

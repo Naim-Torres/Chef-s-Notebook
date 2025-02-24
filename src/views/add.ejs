@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+<section>
+    <h1>Añadir nueva receta</h1>
+    <form action="/add" method="post">
+        <label for="title">Título</label>
+        <input type="text" name="title" id="title" required>
+
+        <label for="ingredients">Ingredientes</label>
+        <textarea name="ingredients" id="ingredients" required></textarea>
+        <label for="steps">Pasos</label>
+        <textarea name="steps" id="steps" required></textarea>
+        
+        <button type="submit">Añadir</button>
+    </form>
+</section>
+<%- include('partials/footer') %>
