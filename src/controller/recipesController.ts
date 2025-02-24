@@ -17,12 +17,13 @@ class recipesController {
         try {
             const { id } = req.query
             if (!id) {
-                return res.status(404).send('No se ha encontrado la receta')
+                res.status(404).send('No se ha encontrado la receta')
+                return
             }
-            // Use Zod to validate the UUID
+            //TODO: Use Zod to validate the UUID
             const recipe = await Recipes.getOne({ id: id.toString() })
             if (!recipe) {
-                return res.status(404).send('No se ha encontrado la receta')
+                res.status(404).send('No se ha encontrado la receta')
             }
             res.status(201).render('recipe', { recipe })
         } catch {
