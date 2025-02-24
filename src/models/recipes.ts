@@ -1,9 +1,12 @@
-import db from '../lib/db.mjs'
+import { RowDataPacket } from 'mysql2'
+import db from '../lib/db.mjs'  
 
 class Recipes { 
     static async getAll() {
         const connection = await db.connect()
-        const [recipes] = await connection.query('SELECT * FROM recipes')
+        const [recipes] = await connection.query(
+            `SELECT name, ingredientes, steps, cooking_time, img, favorite, BIN_TO_UUID(id) id 
+            FROM recipes;`)
         return recipes
     }
 
@@ -13,10 +16,22 @@ class Recipes {
         return recipes_favorites
     }
 
-    static async getOne(id: string) {
+    static async getOne({id}: {id: string}) {
         const connection = await db.connect()
-        const [recipes_by_id] = await connection.query('SELECT * FROM recipes WHERE id = ?', [id])
-        return recipes_by_id
+        try{
+            const [recipe] = await connection.query<RowDataPacket[]>(
+                `SELECT name, ingredientes, steps, cooking_time, img, favorite, BIN_TO_UUID(id) id 
+                FROM recipes WHERE id = UUID_TO_BIN(?);`, [id])
+                
+            if (recipe.length === 0) return null
+            return recipe[0]
+        } catch {
+            throw new Error('Error al consultar la base de datos')
+        }
+        
+
+        /* if (recipes_by_id.length === 0) return null
+        return recipes_by_id[0 */
     }
 }
 
