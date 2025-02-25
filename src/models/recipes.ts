@@ -28,10 +28,6 @@ class Recipes {
         } catch {
             throw new Error('Error al consultar la base de datos')
         }
-        
-
-        /* if (recipes_by_id.length === 0) return null
-        return recipes_by_id[0 */
     }
 }
 

@@ -1,5 +1,6 @@
 import Recipes from '../models/recipes'
 import { Request, Response } from 'express'
+import { z } from 'zod'
 
 class recipesController {
     static async getAll(req: Request, res: Response) {
@@ -16,7 +17,8 @@ class recipesController {
     static async getOne(req: Request, res: Response) {
         try {
             const { id } = req.query
-            if (!id) {
+            const uuidSchema = z.string().uuid()
+            if (!id || !uuidSchema.safeParse(id).success) {
                 res.status(404).send('No se ha encontrado la receta')
                 return
             }

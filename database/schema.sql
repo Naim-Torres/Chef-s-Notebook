@@ -15,7 +15,7 @@ create table recipes (
 	steps TEXT not null,
 	cooking_time int not null,
 	img text,
-	favorite bit not null
+	favorite bit not null default (0)
 );
 
 -- Insertar 15 registros de ejemplo
