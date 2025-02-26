@@ -1,17 +1,17 @@
 <%- include('partials/header') %>
 <section class="flex-column">
     <h1>Añadir nueva receta</h1>
-    <form action="/add" method="post" class="flex-column">
-        <label for="title">Título</label>
-        <input type="text" name="title" id="title" required>
+    <form action="/add" method="POST" class="flex-column">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" required>
         <label for="ingredients">Ingredientes</label>
-        <textarea name="ingredients" id="ingredients" required></textarea>
+        <textarea name="ingredientes" id="ingredientes" required></textarea>
         <label for="steps">Pasos</label>
         <textarea name="steps" id="steps" required></textarea>
-        <label for="image">Imagen</label>
-        <input type="text" name="image" id="image">
-        <label for="cooking_time">Tiempo estimado de preparación</label>
-        <input type="number" name="cooking_time" id="cooking_time" placeholder="minutos" required>
+        <label for="img">Imagen</label>
+        <input type="text" name="img" id="img">
+        <label for="cooking_time">Tiempo estimado de preparación (min)</label>
+        <input type="number" name="cooking_time" id="cooking_time" required>
 
         <button type="submit">Añadir</button>
     </form>

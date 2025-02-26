@@ -1,6 +1,7 @@
 import Recipes from '../models/recipes'
 import { Request, Response } from 'express'
 import { z } from 'zod'
+import validateRecipe from '../schema/recipeSchema'
 
 class recipesController {
     static async getAll(req: Request, res: Response) {
@@ -36,6 +37,27 @@ class recipesController {
 
     static async submitRecipe(req: Request, res: Response) {
         res.status(201).render('add')
+    }
+
+    static async addRecipe(req: Request, res: Response) {
+        if (!isNaN(req.body.cooking_time)) {
+            req.body.cooking_time = Number(req.body.cooking_time);
+        }
+        const result = validateRecipe(req.body)
+        console.log(req.body)
+        
+        if (!result.success) {
+            res.status(400).send(result.error.message)
+            return
+        }
+
+        const newRecipe = await Recipes.addRecipe({ input: result.data })
+        if (!newRecipe) { 
+            res.status(503).send('Error al añadir la receta')
+            return
+        }
+
+        res.status(201).send('Receta añadida correctamente')
     }
 }
 

@@ -14,9 +14,14 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 const PORT = process.env.PORT || 3000
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 app.get("/", recipesController.getAll)
 app.get("/recipe", recipesController.getOne)
 app.get("/recipe/add", recipesController.submitRecipe)
+
+app.post("/add", recipesController.addRecipe)
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
