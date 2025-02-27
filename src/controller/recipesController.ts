@@ -50,9 +50,13 @@ class recipesController {
             res.status(400).send(result.error.message)
             return
         }
-
-        const newRecipe = await Recipes.addRecipe({ input: result.data })
+        try {
+            const newRecipe = await Recipes.addRecipe({ input: result.data })
         if (!newRecipe) { 
+            res.status(503).send('Error al añadir la receta')
+            return
+        }
+        } catch {
             res.status(503).send('Error al añadir la receta')
             return
         }

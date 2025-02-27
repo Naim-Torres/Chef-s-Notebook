@@ -33,12 +33,12 @@ class Recipes {
     }
 
     static async addRecipe({ input }: { input: Recipe }) {
-        const connection = await db.connect()
         const newRecipe = {
             id: randomUUID(),
             ...input
         }
         try {
+            const connection = await db.connect()
             await connection.query(
                 `INSERT INTO recipes (id, name, ingredientes, steps, cooking_time) 
                 VALUES (UUID_TO_BIN(?), ?, ?, ?, ?);`, 
