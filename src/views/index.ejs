@@ -50,7 +50,8 @@
 					placeholder="Qué comemos hoy?"
 				/>
 			</h2>
-			<div style="overflow: auto;" class="bg-sec-white flex-column align-center h-100">
+            <!-- TODO - Add pagination and remote style on component -->
+			<div style="overflow: auto;" id="list-recipe-container" class="bg-sec-white h-100">
 				<%- include('partials/list-recipes', { recipes })%>
 			</div>
 		</div>

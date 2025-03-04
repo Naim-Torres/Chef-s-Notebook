@@ -1,19 +1,35 @@
 <%- include('partials/header') %>
 <section class="flex-column">
     <h1>Añadir nueva receta</h1>
-    <form action="/add" method="POST" class="flex-column">
+    <form action="/add" method="POST" class="flex-column" id="add-form">
         <label for="name">Nombre</label>
         <input type="text" name="name" id="name" required>
         <label for="ingredients">Ingredientes</label>
         <textarea name="ingredientes" id="ingredientes" required></textarea>
         <label for="steps">Pasos</label>
         <textarea name="steps" id="steps" required></textarea>
-        <label for="img">Imagen</label>
-        <input type="text" name="img" id="img">
         <label for="cooking_time">Tiempo estimado de preparación (min)</label>
         <input type="number" name="cooking_time" id="cooking_time" required>
-
-        <button type="submit">Añadir</button>
+        <button id="img-button" type="button"> Agregar imagen</button>
+        <button id="submit-button" type="submit">Añadir</button>
     </form>
 </section>
+<script>
+    const button = document.getElementById('img-button');
+    const addForm = document.getElementById('add-form');
+    const submitButton = document.getElementById('submit-button');
+
+    button.addEventListener('click', () => {
+        const label =  document.createElement('label');
+        label.setAttribute('for', 'img');
+        label.innerText = 'URL de la imagen';
+        addForm.insertBefore(label, submitButton);
+        const img = document.createElement('input')
+        img.setAttribute('type', 'text');
+        img.setAttribute('name', 'img');
+        img.setAttribute('id', 'img');
+        addForm.insertBefore(img, submitButton);
+        button.remove();
+    })
+</script>
 <%- include('partials/footer') %>

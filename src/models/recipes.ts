@@ -14,7 +14,9 @@ class Recipes {
 
     static async getFavorites() {
         const connection = await db.connect()
-        const [recipes_favorites] = await connection.query('SELECT * FROM recipes WHERE favorite = 1')
+        const [recipes_favorites] = await connection.query(
+            `SELECT name, ingredientes, steps, cooking_time, img, favorite, BIN_TO_UUID(id) id 
+            FROM recipes WHERE favorite = 1`)
         return recipes_favorites
     }
 
