@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<section class="flex-column">
+    <h1>Añadir nueva receta</h1>
+    <form action="/add" method="POST" class="flex-column">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" required>
+        <label for="ingredients">Ingredientes</label>
+        <textarea name="ingredientes" id="ingredientes" required></textarea>
+        <label for="steps">Pasos</label>
+        <textarea name="steps" id="steps" required></textarea>
+        <label for="img">Imagen</label>
+        <input type="text" name="img" id="img">
+        <label for="cooking_time">Tiempo estimado de preparación (min)</label>
+        <input type="number" name="cooking_time" id="cooking_time" required>
+
+        <button type="submit">Añadir</button>
+    </form>
+</section>
+<%- include('partials/footer') %>

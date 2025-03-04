@@ -8,7 +8,7 @@
 	<article>
 		<h1>Opciones</h1>
 		<section id="container-relative">
-			<a id="button-corner" href="/add-recipe">
+			<a id="button-corner" href="/recipe/add">
 				<i class="fa-solid fa-plus"></i>
 			</a>
 			<div class="card flex-column">
@@ -29,7 +29,7 @@
 		<div class="card flex-column">
 			<h2 class="bg-pr-green tx-sm">Recetas totales</h2>
 			<div class="bg-sec-white flex-row flex-row align-center">
-				<p class="tx-lg">10</p>
+				<p class="tx-lg"><%= recipes.length > 0 ? recipes.length : 0%></p>
 				<p>Recetas registradas</p>
 			</div>
 		</div>

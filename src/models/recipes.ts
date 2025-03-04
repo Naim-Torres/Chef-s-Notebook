@@ -1,5 +1,7 @@
 import { RowDataPacket } from 'mysql2'
 import db from '../lib/db.mjs'  
+import { randomUUID } from 'node:crypto'
+import { Recipe } from '../types/recipe'
 
 class Recipes { 
     static async getAll() {
@@ -28,10 +30,29 @@ class Recipes {
         } catch {
             throw new Error('Error al consultar la base de datos')
         }
-        
+    }
 
-        /* if (recipes_by_id.length === 0) return null
-        return recipes_by_id[0 */
+    static async addRecipe({ input }: { input: Recipe }) {
+        const newRecipe = {
+            id: randomUUID(),
+            ...input
+        }
+        try {
+            const connection = await db.connect()
+            await connection.query(
+                `INSERT INTO recipes (id, name, ingredientes, steps, cooking_time) 
+                VALUES (UUID_TO_BIN(?), ?, ?, ?, ?);`, 
+                [newRecipe.id, newRecipe.name, newRecipe.ingredientes, newRecipe.steps, newRecipe.cooking_time])
+    
+            if(newRecipe.img) {
+                await connection.query(
+                    `UPDATE recipes SET img = ? WHERE id = UUID_TO_BIN(?);`, 
+                    [newRecipe.img, newRecipe.id])
+            }
+            return newRecipe
+        } catch {
+            throw new Error('Error al añadir la receta')
+        }
     }
 }
 
