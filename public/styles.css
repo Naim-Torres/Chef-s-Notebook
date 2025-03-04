@@ -41,6 +41,11 @@ h2 {
 	margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: var(--primary-black);
+}
+
 #add-recipe-img {
 	width: 170px;
 	height: 170px;
@@ -97,8 +102,24 @@ h2 {
     margin-right: 45px;
 }
 
+#list-recipe-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
 #row-recipe {
-    padding: 0;
+    width: 80%;
+    padding-inline: 20px;
+    justify-content: space-between;
+    border: 3px solid var(--primary-green);
+    border-radius: 15px;
+    align-items: center;
+
+    &&:hover {
+        background: var(--primary-green);
+        color: var(--primary-white);
+    }
 }
 
 .carrousel-card {
