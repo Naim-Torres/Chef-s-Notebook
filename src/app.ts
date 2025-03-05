@@ -20,7 +20,9 @@ app.use(express.urlencoded({ extended: true }))
 app.get("/", recipesController.getAll)
 app.get("/recipe", recipesController.getOne)
 app.get("/recipe/add", recipesController.submitRecipe)
+app.get("/recipe/update", recipesController.editRecipe)
 
+app.post("/update", recipesController.updateRecipe)
 app.post("/add", recipesController.addRecipe)
 
 app.listen(PORT, () => {

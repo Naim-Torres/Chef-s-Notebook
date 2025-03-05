@@ -56,6 +56,19 @@ class Recipes {
             throw new Error('Error al añadir la receta')
         }
     }
+
+    static async updateRecipe({ id, input }: { id: string, input: Recipe }) {
+        try {
+            const connection = await db.connect()
+            const result = await connection.query(`
+                UPDATE recipes SET name = ?, ingredientes = ?, steps = ?, cooking_time = ?, img = ?
+                WHERE id = UUID_TO_BIN(?);`, 
+                [ input.name, input.ingredientes, input.steps, input.cooking_time, input.img, id])
+            return result
+        } catch {
+            throw new Error('Error al actualizar la receta')
+        }
+    }
 }
 
 export default Recipes

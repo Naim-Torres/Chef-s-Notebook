@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+<section class="flex-column">
+    <h1>Editar <%= recipe.name %></h1>
+    <form action="/update?id=<%=recipe.id%>" method="POST" class="flex-column" id="add-form">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" value="<%= recipe.name%>" required>
+        <label for="ingredients">Ingredientes</label>
+        <textarea name="ingredientes" id="ingredientes" required><%= recipe.ingredientes%></textarea>
+        <label for="steps">Pasos</label>
+        <textarea name="steps" id="steps" required><%= recipe.steps%></textarea>
+        <label for="cooking_time">Tiempo estimado de preparación (min)</label>
+        <input type="number" name="cooking_time" id="cooking_time" value="<%= recipe.cooking_time%>" required>
+        <% if (recipe.img) { %>
+            <img src="<%= recipe.img%>" alt="<%= recipe.name%>">
+            <label for="img">Imagen</label>
+            <input type="text" name="img" id="img" value="<%= recipe.img%>">
+        <% } else { %>
+        <button id="img-button" type="button"> Agregar imagen</button>
+        <% } %>
+        <button id="submit-button" type="submit">Editar</button>
+    </form>
+</section>
+<script>
+    const button = document.getElementById('img-button');
+    const addForm = document.getElementById('add-form');
+    const submitButton = document.getElementById('submit-button');
+
+    button.addEventListener('click', () => {
+        const label =  document.createElement('label');
+        label.setAttribute('for', 'img');
+        label.innerText = 'URL de la imagen';
+        addForm.insertBefore(label, submitButton);
+        const img = document.createElement('input')
+        img.setAttribute('type', 'text');
+        img.setAttribute('name', 'img');
+        img.setAttribute('id', 'img');
+        img.setAttribute('value', '<%= recipe.img%>');
+        addForm.insertBefore(img, submitButton);
+        button.remove();
+    })
+</script>
+<%- include('partials/footer') %>
