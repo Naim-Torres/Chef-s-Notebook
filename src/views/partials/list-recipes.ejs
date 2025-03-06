@@ -1,6 +1,6 @@
 <% if(recipes.length > 0) { %> 
     <% recipes.forEach((recipe) => { %>
-        <a href="/recipe?id=<%= recipe.id%>" id='row-recipe' class="flex-row">
+        <a href="/recipe?id=<%= recipe.id%>" id='row-recipe' class="flex-row" data-name="<%= recipe.name %>">
             <h3 class="tx-sm"><%= recipe.name %></h3>
             <p class="tx-sm"><%= recipe.cooking_time %></p>
         </a>

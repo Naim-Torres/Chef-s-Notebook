@@ -48,6 +48,7 @@
 					name="search-recipe"
 					id="search-recipe"
 					placeholder="Qué comemos hoy?"
+                    oninput="filterRecipes()"
 				/>
 			</h2>
             <!-- TODO - Add pagination and remote style on component -->
@@ -57,4 +58,19 @@
 		</div>
 	</article>
 </section>
+<script>
+    function filterRecipes() {
+        const searchInput = document.getElementById('search-recipe').value.toLowerCase();
+        const recipes = document.querySelectorAll('#row-recipe');
+
+        recipes.forEach(recipe => {
+        const recipeName = recipe.getAttribute('data-name').toLowerCase();
+        if (recipeName.includes(searchInput)) {
+            recipe.style.display = '';
+        } else {
+            recipe.style.display = 'none';
+        }
+    });
+    }
+</script>
 <%- include('partials/footer') %>
