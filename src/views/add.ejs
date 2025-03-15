@@ -16,7 +16,7 @@
         <label for="cooking_time">Tiempo estimado de preparación (min)</label>
         <div class="flex-row">
             <input type="number" name="cooking_time" id="cooking_time" placeholder="E.g 10" required>
-            <button id="img-button" class="button" type="button">Agregar imagen</button>
+            <button id="img-button" class="button secondary" type="button">Agregar imagen</button>
         </div>
         <button id="submit-button" class="button" type="submit">Añadir</button>
     </form>
@@ -36,6 +36,7 @@
             img.setAttribute('type', 'text');
             img.setAttribute('name', 'img');
             img.setAttribute('id', 'img');
+            img.setAttribute('placeholder', 'E.g https://www.example.com/image.jpg');
             addForm.insertBefore(img, submitButton);
             button.innerText = 'Eliminar imagen';
         } else {

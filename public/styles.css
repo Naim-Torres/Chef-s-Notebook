@@ -55,6 +55,10 @@ a {
     color: var(--primary-black);
 }
 
+textarea {
+    font-family: inherit;
+}
+
 #add-title {
     align-self: center;
     padding-top: 40px;
@@ -81,6 +85,10 @@ a {
         border-radius: 15px;
         margin-bottom: 25px;
         padding: 10px;
+
+        &&#img {
+            margin-right: 20px;
+        }
     }
 
     textarea{
@@ -184,17 +192,93 @@ a {
     }
 }
 
+#img-preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+}
+
+
+#grid-recipe {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-rows: repeat(3, 1fr);
+    gap: 50px 30px;
+    margin: 50px;
+
+    #recipe-img {
+        grid-area: 1 / 1 / 3 / 2;
+        img {
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+        }
+    }
+
+    #cooking_time {
+        box-sizing: border-box;
+        padding: 35px;
+        border-radius: 35px;
+    }
+
+    #recipe-options{
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 35px;
+        border-radius: 35px;
+    }
+
+    #recipe-ingredients {
+        box-sizing: border-box;
+        grid-area: 1 / 2 / 3 / 3;
+        padding: 35px;
+        border-radius: 35px;
+    }
+
+    #recipe-steps {
+        box-sizing: border-box;
+        grid-area: 3 / 1 / 4 / -1;
+        padding: 35px;
+        border-radius: 35px;
+    }
+
+}
+
 .button {
+    box-sizing: border-box;
     padding: 10px 20px;
     border: transparent;
     border-radius: 15px;
     width: 100%;
 
-    &&#img-button {
+    &&:hover {
+        cursor: pointer;
+    }
+
+    &&.secondary {
         background: transparent;
         border: var(--primary-green) solid 3px;
-        margin-bottom: 25px;
-        margin-left: 10px;
+        &&#img-button{
+            margin-bottom: 25px;
+            margin-left: 10px;
+        }
+    }
+
+    &&.secondary:hover {
+        background: var(--primary-green);
+        color: var(--primary-white);
+    }
+
+    &&.delete {
+        background: var(--primary-red);
+        color: var(--primary-white);
+    }
+
+    &&.delete:hover {
+        background: var(--primary-brown);
+        color: var(--primary-white);
     }
 
     &&#submit-button {
@@ -205,6 +289,11 @@ a {
         align-self: center;
         position: absolute;
         bottom: 40px;
+    }
+
+    &&#submit-button:hover {
+        background: var(--primary-brown);
+        color: var(--primary-white);
     }
 }
 
