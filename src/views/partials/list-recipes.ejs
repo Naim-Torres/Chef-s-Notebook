@@ -2,7 +2,10 @@
     <% recipes.forEach((recipe) => { %>
         <a href="/recipe?id=<%= recipe.id%>" id='row-recipe' class="flex-row" data-name="<%= recipe.name %>">
             <h3 class="tx-sm"><%= recipe.name %></h3>
-            <p class="tx-sm"><%= recipe.cooking_time %></p>
+            <div class="flex-row">
+                <i class="fa-regular fa-clock flex-row "></i>
+                <p class="tx-sm"><%= recipe.cooking_time %></p>
+            </div>
         </a>
         <% }) %>
 <% } else { %>

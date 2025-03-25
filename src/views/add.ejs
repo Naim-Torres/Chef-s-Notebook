@@ -1,17 +1,24 @@
 <%- include('partials/header') %>
 <section class="flex-column">
-    <h1>Añadir nueva receta</h1>
-    <form action="/add" method="POST" class="flex-column" id="add-form">
+    <div id="add-title">
+        <h1 class="tx-md">Añadir nueva receta</h1>
+        <span class="tx-sm">Rellena el formulario con la información</span>
+    </div>
+    <form action="/add" method="POST" class="flex-column card bg-sec-white tx-sm" id="add-form">
         <label for="name">Nombre</label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" placeholder="E.g Milanesa napolitana" required>
         <label for="ingredients">Ingredientes</label>
-        <textarea name="ingredientes" id="ingredientes" required></textarea>
+        <textarea name="ingredientes" id="ingredientes" 
+        placeholder="E.g Lechuga romana, crutones, parmesano, aderezo César" required></textarea>
         <label for="steps">Pasos</label>
-        <textarea name="steps" id="steps" required></textarea>
+        <textarea name="steps" id="steps" required 
+        placeholder="E.g 1. Mezclar ingredientes secos. 2. Añadir ingredientes húmedos. 3. Hornear a 175°C por 30 minutos."></textarea>
         <label for="cooking_time">Tiempo estimado de preparación (min)</label>
-        <input type="number" name="cooking_time" id="cooking_time" required>
-        <button id="img-button" type="button"> Agregar imagen</button>
-        <button id="submit-button" type="submit">Añadir</button>
+        <div class="flex-row">
+            <input type="number" name="cooking_time" id="cooking_time" placeholder="E.g 10" required>
+            <button id="img-button" class="button secondary" type="button">Agregar imagen</button>
+        </div>
+        <button id="submit-button" class="button" type="submit">Añadir</button>
     </form>
 </section>
 <script>
@@ -20,16 +27,23 @@
     const submitButton = document.getElementById('submit-button');
 
     button.addEventListener('click', () => {
-        const label =  document.createElement('label');
-        label.setAttribute('for', 'img');
-        label.innerText = 'URL de la imagen';
-        addForm.insertBefore(label, submitButton);
-        const img = document.createElement('input')
-        img.setAttribute('type', 'text');
-        img.setAttribute('name', 'img');
-        img.setAttribute('id', 'img');
-        addForm.insertBefore(img, submitButton);
-        button.remove();
+        if(!document.getElementById('img')){
+            const label =  document.createElement('label');
+            label.setAttribute('for', 'img');
+            label.innerText = 'URL de la imagen';
+            addForm.insertBefore(label, submitButton);
+            const img = document.createElement('input')
+            img.setAttribute('type', 'text');
+            img.setAttribute('name', 'img');
+            img.setAttribute('id', 'img');
+            img.setAttribute('placeholder', 'E.g https://www.example.com/image.jpg');
+            addForm.insertBefore(img, submitButton);
+            button.innerText = 'Eliminar imagen';
+        } else {
+            document.getElementById('img').remove();
+            document.querySelector('label[for="img"]').remove();
+            button.innerText = 'Agregar imagen';
+        }
     })
 </script>
 <%- include('partials/footer') %>

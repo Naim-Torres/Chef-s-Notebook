@@ -2,10 +2,12 @@
     <% if(favorites.length > 0) { %> 
         <% favorites.forEach((recipe) => { %> 
             <%if(recipes) { %>
-                <a href="/recipe?id=<%= recipe.id%>" class="flex-column carrousel-card card bg-sec-white h-100">
-                    <img class="img-fav-card" src="<%= recipe.img %>" alt="<%= recipe.name %>" />
+                <a href="/recipe?id=<%= recipe.id%>" class="carrousel-card bg-sec-white">
+                    <% if(recipe.img) { %>
+                        <img class="img-fav-card" src="<%= recipe.img %>" alt="<%= recipe.name %>" />
+                    <% } %>
                     <h3 class="tx-sm"><%= recipe.name %></h3>
-                    <p class="tx-xs"><%= recipe.description %></p>
+                    <p class="tx-xs"><%= recipe.ingredientes %></p>
                     <span class="tx-xs bold"><%= recipe.cooking_time %></span>
                 </a>
             <% } %> 

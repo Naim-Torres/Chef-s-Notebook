@@ -1,29 +1,34 @@
 <%- include('partials/header') %>
 
-<section>
-    <h2>Nombre de la receta</h2>
-    <span><%= recipe.name %></span>
-    <img src="<%= recipe.img%>" alt="<%= recipe.name%>">
-</section>
+<section id="grid-recipe">
+    <section id="recipe-img">
+        <% if (!recipe.img) { %>
+            <img src="https://freerangestock.com/sample/11197/empty-plate.jpg" class="w-100 h-100" alt="<%= recipe.name%>">
+        <% } else { %>
+            <img src="<%= recipe.img%>" class="w-100 h-100" alt="<%= recipe.name%>">
+        <% } %>
+    </section>
 
-<section>
-    <h2>Tiempo estimado</h2>
-    <span><%= recipe.cooking_time %></span>
-</section>
+    <section id="recipe-ingredients" class="w-100 h-100 bg-sec-white">
+        <h2>Ingredientes</h2>
+        <p><%= recipe.ingredientes%></p>
+    </section>
 
-<section>
-    <h2>Ingredientes</h2>
-    <p><%= recipe.ingredientes%></p>
-</section>
+    <section id="cooking_time" class="w-100 h-100 bg-sec-white">
+        <h2>Tiempo estimado</h2>
+        <span><%= recipe.cooking_time %></span>
+    </section>
 
-<section>
-    <h2>Procedimiento</h2>
-    <p><%= recipe.steps %></p>
-</section>
+    <section id="recipe-options" class="w-100 h-100 bg-sec-white">
+        <a href="recipe/update?id=<%= recipe.id%>" class="button secondary"><span>Editar receta</span></a>
+        <a href="" class="button delete"><span>Borrar receta</span></a>
+    </section>
 
-<section>
-    <h2>Editar receta</h2>
-    <a href="recipe/update?id=<%= recipe.id%>"><span>Editar receta</span></a>
+    <section id="recipe-steps" class="w-100 h-100 bg-sec-white">
+        <h2><%= recipe.name %></h2>
+        <h2>Procedimiento</h2>
+        <p><%= recipe.steps %></p>
+    </section>
 </section>
 
 <%- include('partials/footer') %>
